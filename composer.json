@@ -1,6 +1,7 @@
 {
     "name": "koenvanmeijeren/php-code-tests-in-ci-cd",
-    "license": "private",
+    "description": "In this repository are various tests demonstrated for PHP. Its purpose is to show how such tests could be implemented and used in production code.",
+    "license": "GPL-3.0-or-later",
     "authors": [
         {
             "name": "Koen van Meijeren",
