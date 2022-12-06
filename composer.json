@@ -14,7 +14,8 @@
         }
     },
     "require": {
-        "php": "^8.1"
+        "php": "^8.1",
+        "symfony/console": "^6.2"
     },
     "require-dev": {
         "povils/phpmnd": "^3.0",
@@ -25,7 +26,8 @@
             "phpmnd src/ --progress --extensions=default_parameter,-return,argument,array,assign,operation,property"
         ],
         "start": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d",
-        "stop": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml stop"
+        "stop": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml stop",
+        "console": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml exec php php public/index.php"
     },
     "config": {
         "sort-packages": true
