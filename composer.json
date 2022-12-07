@@ -14,18 +14,20 @@
         }
     },
     "require": {
-        "php": "^8.1"
+        "php": "^8.1",
+        "symfony/console": "^6.2"
     },
     "require-dev": {
         "povils/phpmnd": "^3.0",
         "roave/security-advisories": "dev-master"
     },
     "scripts": {
-        "phpmnd": [
-            "phpmnd src/ --progress --extensions=default_parameter,-return,argument,array,assign,operation,property"
-        ],
+        "phpmnd": "phpmnd src/MagicNumbers --progress",
+        "phpmnd-small": "phpmnd src/MagicNumbers --progress --extensions=-return",
+        "phpmnd-full": "phpmnd src/MagicNumbers --progress --extensions=all",
         "start": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d",
-        "stop": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml stop"
+        "stop": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml stop",
+        "app": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml exec php php public/index.php"
     },
     "config": {
         "sort-packages": true
