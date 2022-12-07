@@ -1,4 +1,4 @@
-name: PHP Code default tests
+name: PHP Code full tests
 
 on:
   push:
@@ -34,5 +34,5 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
 
-    - name: Run Magic numbers test (default)
-      run: composer run phpmnd
+    - name: Run Magic numbers test (full)
+      run: composer run phpmnd-full
