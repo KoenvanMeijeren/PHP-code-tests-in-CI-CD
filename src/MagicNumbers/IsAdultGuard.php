@@ -5,7 +5,7 @@ namespace Src\MagicNumbers;
 
 final class IsAdultGuard {
 
-    private int $mediocreAge = 30;
+    private int $youngAdult = 24;
 
     public function __construct(
         private readonly Person $person,
