@@ -14,4 +14,8 @@ final class IsAdultGuard {
     public function isAdult(): bool {
         return $this->person->age > 18;
     }
+
+    public function isAboveAge(int $age = -1): bool {
+        return $this->person->age > $age;
+    }
 }

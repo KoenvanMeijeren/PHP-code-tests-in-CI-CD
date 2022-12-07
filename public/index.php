@@ -7,12 +7,16 @@ if (php_sapi_name() !== 'cli') {
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use Src\MagicNumbers\MagicNumberProgramCommand;
+use Src\ExecuteAllCommand;
+use Src\MagicNumberCommand;
 use Symfony\Component\Console\Application;
 
 $application = new Application();
-$command = new MagicNumberProgramCommand();
-$application->add($command);
-$application->setDefaultCommand($command->getName());
-$application->run();
 
+$application->add(new MagicNumberCommand());
+
+$defaultCommand = new ExecuteAllCommand();
+$application->add($defaultCommand);
+$application->setDefaultCommand($defaultCommand->getName());
+
+$application->run();
