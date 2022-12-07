@@ -22,12 +22,11 @@
         "roave/security-advisories": "dev-master"
     },
     "scripts": {
-        "phpmnd": [
-            "phpmnd src/ --progress --extensions=default_parameter,-return,argument,array,assign,operation,property"
-        ],
+        "phpmnd": "phpmnd src/MagicNumbers --progress --extensions=return,condition",
+        "phpmnd-full": "phpmnd src/MagicNumbers --progress --extensions=all",
         "start": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d",
         "stop": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml stop",
-        "console": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml exec php php public/index.php"
+        "app": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml exec php php public/index.php"
     },
     "config": {
         "sort-packages": true
