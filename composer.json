@@ -18,10 +18,14 @@
         "symfony/console": "^6.2"
     },
     "require-dev": {
+        "infection/infection": "^0.26.16",
+        "phpunit/phpunit": "9.5",
         "povils/phpmnd": "^3.0",
         "roave/security-advisories": "dev-master"
     },
     "scripts": {
+        "infection": "./vendor/bin/infection --show-mutations",
+        "phpunit": "./vendor/bin/phpunit",
         "phpmnd": "phpmnd src/MagicNumbers --progress",
         "phpmnd-small": "phpmnd src/MagicNumbers --progress --extensions=-return",
         "phpmnd-full": "phpmnd src/MagicNumbers --progress --extensions=all",
@@ -30,6 +34,9 @@
         "app": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml exec php php public/index.php"
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "infection/extension-installer": true
+        }
     }
 }

@@ -9,11 +9,14 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 use Src\ExecuteAllCommand;
 use Src\MagicNumberCommand;
+use Src\MutationTestingCommand;
 use Symfony\Component\Console\Application;
 
 $application = new Application();
 
 $application->add(new MagicNumberCommand());
+
+$application->add(new MutationTestingCommand());
 
 $defaultCommand = new ExecuteAllCommand();
 $application->add($defaultCommand);
