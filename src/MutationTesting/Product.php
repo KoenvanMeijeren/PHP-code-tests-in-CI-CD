@@ -6,8 +6,8 @@ namespace Src\MutationTesting;
 final class Product
 {
     public function __construct(
-        readonly private int $price,
-        readonly private ?string $freeShippingCoupon
+        private readonly int $price,
+        private readonly ?string $freeShippingCoupon
     ) {
     }
 

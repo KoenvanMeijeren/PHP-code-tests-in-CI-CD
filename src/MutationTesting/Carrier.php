@@ -6,7 +6,7 @@ namespace Src\MutationTesting;
 final class Carrier
 {
     public function __construct(
-        readonly private bool $acceptFreeShipping
+        private readonly bool $acceptFreeShipping
     ) {
     }
 
