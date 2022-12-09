@@ -1,0 +1,20 @@
+{
+    "minCoveredMsi": 100,
+    "$schema": "vendor/infection/infection/resources/schema.json",
+    "source": {
+        "directories": [
+            "src/MutationTesting"
+        ],
+        "excludes": [
+            "migrations"
+        ]
+    },
+    "logs": {
+        "text": "code-reports/infection.log"
+    },
+    "mutators": {
+        "@default": true
+    },
+    "testFramework":"phpunit",
+    "testFrameworkOptions": ""
+}
