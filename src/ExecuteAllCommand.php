@@ -20,6 +20,8 @@ final class ExecuteAllCommand extends Command {
         $command = $application->find(MagicNumberCommand::COMMAND_NAME);
         $command->run(new ArrayInput([]), $output);
 
+
+
         $command = $application->find(MutationTestingCommand::COMMAND_NAME);
         $command->run(new ArrayInput([]), $output);
 

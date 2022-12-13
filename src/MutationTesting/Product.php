@@ -6,6 +6,7 @@ namespace Src\MutationTesting;
 final class Product
 {
     public function __construct(
+        private readonly string $name,
         private readonly int $price,
         private readonly ?string $freeShippingCoupon
     ) {
@@ -15,7 +16,15 @@ final class Product
         return $this->price;
     }
 
+    public function getName(): string {
+        return $this->name;
+    }
+
     public function hasFreeShippingCoupon(): bool {
         return $this->freeShippingCoupon !== null;
+    }
+
+    public function __toString(): string {
+        return "name: $this->name, price: $this->price, free shipping coupon: $this->freeShippingCoupon";
     }
 }
