@@ -35,7 +35,7 @@ jobs:
       run: composer install --prefer-dist --no-progress
 
   magic-numbers-test-small:
-
+    needs: build
     runs-on: ubuntu-latest
 
     steps:
@@ -46,7 +46,7 @@ jobs:
       run: composer run phpmnd-full
 
   magic-numbers-test-default:
-
+    needs: build
     runs-on: ubuntu-latest
 
     steps:
@@ -57,7 +57,7 @@ jobs:
       run: composer run phpmnd
 
   magic-numbers-test-full:
-
+    needs: build
     runs-on: ubuntu-latest
 
     steps:
@@ -68,7 +68,7 @@ jobs:
       run: composer run phpmnd-full
 
   phpmd:
-
+    needs: build
     name: PHPMD
     runs-on: ubuntu-latest
 
