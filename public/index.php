@@ -10,6 +10,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use Src\ExecuteAllCommand;
 use Src\MagicNumberCommand;
 use Src\MutationTestingCommand;
+use Src\MessDetectorCommand;
 use Symfony\Component\Console\Application;
 
 $application = new Application();
@@ -17,6 +18,8 @@ $application = new Application();
 $application->add(new MagicNumberCommand());
 
 $application->add(new MutationTestingCommand());
+
+$application->add(new MessDetectorCommand());
 
 $defaultCommand = new ExecuteAllCommand();
 $application->add($defaultCommand);
