@@ -34,8 +34,7 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
       
-      
-  magic-numbers-test:
+  magic-numbers-test-small:
   
     runs-on: ubuntu-latest
     
@@ -45,3 +44,26 @@ jobs:
     
     - name: Run Magic numbers test (full)
       run: composer run phpmnd-full
+      
+  magic-numbers-test-default:
+  
+    runs-on: ubuntu-latest
+    
+    steps:
+    
+    - uses: actions/checkout@v3
+    
+    - name: Run Magic numbers test (full)
+      run: composer run phpmnd
+
+  magic-numbers-test-full:
+  
+    runs-on: ubuntu-latest
+    
+    steps:
+    
+    - uses: actions/checkout@v3
+    
+    - name: Run Magic numbers test (full)
+      run: composer run phpmnd-full
+      
