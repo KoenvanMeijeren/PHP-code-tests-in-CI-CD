@@ -22,4 +22,24 @@ class ShippingCalculatorTest extends TestCase
 
         $this->assertFalse($isShippingFree);
     }
+
+    public function test_free_shipping_should_not_be_applied_when_price_is_to_low2(): void {
+
+        $product = new Product("product1", 40, "coupon");
+        $carrier = new Carrier("PostNl", true);
+        $calc = new ShippingCalculator($carrier);
+        $isShippingFree = $calc->isShippingFree($product);
+
+        $this->assertTrue($isShippingFree);
+    }
+
+    public function test_free_shipping_should_not_be_applied_when_price_is_to_low3(): void {
+
+        $product = new Product("product1", 35, "coupon");
+        $carrier = new Carrier("PostNl", true);
+        $calc = new ShippingCalculator($carrier);
+        $isShippingFree = $calc->isShippingFree($product);
+
+        $this->assertFalse($isShippingFree);
+    }
 }
