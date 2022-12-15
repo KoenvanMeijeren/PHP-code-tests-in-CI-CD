@@ -15,8 +15,8 @@ class ShippingCalculatorTest extends TestCase
 {
     public function test_free_shipping_should_not_be_applied_when_price_is_to_low(): void {
 
-        $product = new Product(10, null);
-        $carrier = new Carrier(true);
+        $product = new Product("product1", 10, null);
+        $carrier = new Carrier("PostNl", true);
         $calc = new ShippingCalculator($carrier);
         $isShippingFree = $calc->isShippingFree($product);
 
