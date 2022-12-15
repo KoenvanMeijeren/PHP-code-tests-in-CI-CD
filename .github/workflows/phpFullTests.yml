@@ -12,7 +12,7 @@ permissions:
   contents: read
 
 jobs:
-  build:
+  validate-composer:
 
     runs-on: ubuntu-latest
 
@@ -21,6 +21,15 @@ jobs:
 
     - name: Validate composer.json and composer.lock
       run: composer validate --strict
+
+
+  magic-numbers-test-small:
+    needs: validate-composer
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - uses: actions/checkout@v3
 
     - name: Cache Composer packages
       id: composer-cache
@@ -36,3 +45,74 @@ jobs:
 
     - name: Run Magic numbers test (full)
       run: composer run phpmnd-full
+
+  magic-numbers-test-default:
+    needs: validate-composer
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - uses: actions/checkout@v3
+
+    - name: Cache Composer packages
+      id: composer-cache
+      uses: actions/cache@v3
+      with:
+        path: vendor
+        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-php-
+
+    - name: Install dependencies
+      run: composer install --prefer-dist --no-progress
+
+    - name: Run Magic numbers test (full)
+      run: composer run phpmnd
+
+  magic-numbers-test-full:
+    needs: validate-composer
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - uses: actions/checkout@v3
+
+    - name: Cache Composer packages
+      id: composer-cache
+      uses: actions/cache@v3
+      with:
+        path: vendor
+        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-php-
+
+    - name: Install dependencies
+      run: composer install --prefer-dist --no-progress
+
+    - name: Run Magic numbers test (full)
+      run: composer run phpmnd-full
+
+  phpmd:
+    needs: validate-composer
+    name: PHPMD
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Cache Composer packages
+        id: composer-cache
+        uses: actions/cache@v3
+        with:
+          path: vendor
+          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-php-
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress
+
+      - name: Run PHPMD
+        run: composer run phpmd-github
+

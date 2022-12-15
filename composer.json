@@ -21,6 +21,7 @@
         "infection/infection": "^0.26.16",
         "phpunit/phpunit": "9.5",
         "povils/phpmnd": "^3.0",
+        "phpmd/phpmd": "@stable",
         "roave/security-advisories": "dev-master"
     },
     "scripts": {
@@ -29,6 +30,9 @@
         "phpmnd": "phpmnd src/MagicNumbers --progress",
         "phpmnd-small": "phpmnd src/MagicNumbers --progress --extensions=-return",
         "phpmnd-full": "phpmnd src/MagicNumbers --progress --extensions=all",
+        "phpmd-xml": "phpmd ./src xml phpmd.ruleset.xml --exclude 'tests/*,vendor/*'",
+        "phpmd-github": "phpmd ./src github phpmd.ruleset.xml --exclude 'tests/*,vendor/*'",
+        "phpmd-create-baseline": "phpmd ./src text phpmd.ruleset.xml --generate-baseline",
         "start": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d",
         "stop": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml stop",
         "app": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml exec php php public/index.php"
