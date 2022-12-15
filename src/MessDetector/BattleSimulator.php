@@ -30,37 +30,56 @@ final class BattleSimulator
         {
             $this->pokemon1Turn();
         }
-        else if($this->pokemon1->speed == $this->pokemon2->speed)
-        {
-            $this->doCoinflip();
-        }
-        else
+        if($this->pokemon1->speed < $this->pokemon2->speed)
         {
             $this->pokemon2Turn();
+        }
+        if($this->pokemon1->speed == $this->pokemon2->speed){
+            $this->doCoinFlip();
         }
     }
 
     public function doCoinFlip() : void
     {
+        $HEADS = 1;
+        $TAILS = 2;
         $coinFlip = rand(1,2);
-        if($coinFlip == 1)
+        if($coinFlip == $HEADS)
         {
             $this->pokemon1Turn();
         }
-        else
+        if($coinFlip == $TAILS)
         {
             $this->pokemon2Turn();
         }
     }
 
-    public function getWinningPokemon(): Pokemon
+    private function getWinningPokemon(): Pokemon|null
     {
-        if($this->pokemon1->getHp() > 0){
+        $pokemon1Hp = $this->pokemon1->getHp();
+        $pokemon2Hp = $this->pokemon2->getHp();
+        if($this->bothPokemonAlive()){
+            return null;
+        }
+        if($pokemon1Hp > $pokemon2Hp){
             return $this->pokemon1;
         }
-        else {
+        if($pokemon2Hp > $pokemon1Hp){
             return $this->pokemon2;
         }
+        return null;
+    }
+
+    private function bothPokemonAlive(): bool{
+        $DEATH_HP = 0;
+        $pokemon1Hp = $this->pokemon1->getHp();
+        $pokemon2Hp = $this->pokemon2->getHp();
+
+        if($pokemon1Hp > $DEATH_HP && $pokemon2Hp > $DEATH_HP)
+        {
+            return true;
+        }
+        return false;
     }
 
 
