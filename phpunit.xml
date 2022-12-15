@@ -22,7 +22,7 @@
     <coverage cacheDirectory="code-reports/code-coverage"
               processUncoveredFiles="true">
         <include>
-            <directory suffix=".php">src</directory>
+            <directory suffix=".php">src/MutationTesting</directory>
         </include>
         <report>
             <html outputDirectory="code-reports/coverage"/>

@@ -12,7 +12,7 @@ final class ShippingCalculator
 
     public function isShippingFree(Product $product): bool {
 
-        if($product->getPrice() <= 35) {
+        if($product->price <= 35) {
             return false;
         }
 

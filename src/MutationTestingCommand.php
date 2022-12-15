@@ -53,9 +53,9 @@ final class MutationTestingCommand extends Command
         $output->writeln([
             '<info>Free shipping</info>',
             '============',
-            "$product3 | $carrier1 | has " . ($shippingCalculator1->isShippingFree($product3) ? "" : "no") . " free shipping.",
             "$product1 | $carrier1 | has " . ($shippingCalculator1->isShippingFree($product1) ? "" : "no") . " free shipping.",
             "$product2 | $carrier1 | has " . ($shippingCalculator1->isShippingFree($product2) ? "" : "no") . " free shipping.",
+            "$product3 | $carrier1 | has " . ($shippingCalculator1->isShippingFree($product3) ? "" : "no") . " free shipping.",
             "$product1 | $carrier2 | has " . ($shippingCalculator2->isShippingFree($product1) ? "" : "no") . " free shipping.",
             "$product2 | $carrier2 | has " . ($shippingCalculator2->isShippingFree($product2) ? "" : "no") . " free shipping.",
             "$product3 | $carrier2 | has " . ($shippingCalculator2->isShippingFree($product3) ? "" : "no") . " free shipping.",
