@@ -22,7 +22,7 @@ final class Pokemon
         return $this->hp;
     }
 
-    public function dammage(int $dmg){
+    public function damage(int $dmg){
         $this->hp -= $dmg;
     }
 
