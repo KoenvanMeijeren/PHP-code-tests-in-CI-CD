@@ -10,7 +10,8 @@
     ],
     "autoload": {
         "psr-4": {
-            "Src\\": "src/"
+            "Src\\": "src/",
+            "Tests\\": "tests/"
         }
     },
     "require": {
@@ -25,17 +26,18 @@
         "roave/security-advisories": "dev-master"
     },
     "scripts": {
-        "infection": "./vendor/bin/infection --show-mutations",
-        "phpunit": "./vendor/bin/phpunit",
         "phpmnd": "phpmnd src/MagicNumbers --progress",
         "phpmnd-small": "phpmnd src/MagicNumbers --progress --extensions=-return",
         "phpmnd-full": "phpmnd src/MagicNumbers --progress --extensions=all",
-        "phpmd-xml": "phpmd ./src xml phpmd.ruleset.xml --exclude 'tests/*,vendor/*'",
-        "phpmd-github": "phpmd ./src github phpmd.ruleset.xml --exclude 'tests/*,vendor/*'",
-        "phpmd-create-baseline": "phpmd ./src text phpmd.ruleset.xml --generate-baseline",
+        "phpmd": "phpmd ./src/MessDetector text phpmd.ruleset.xml --exclude 'tests/*,vendor/*'",
+        "phpmd-xml": "phpmd ./src/MessDetector xml phpmd.ruleset.xml --exclude 'tests/*,vendor/*'",
+        "phpmd-github": "phpmd ./src/MessDetector github phpmd.ruleset.xml --exclude 'tests/*,vendor/*'",
+        "phpmd-create-baseline": "phpmd ./src/MessDetector text phpmd.ruleset.xml --generate-baseline",
         "start": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d",
         "stop": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml stop",
-        "app": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml exec php php public/index.php"
+        "app": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml exec php php public/index.php",
+        "phpunit": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml exec php ./vendor/bin/phpunit",
+        "infection": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml exec php ./vendor/bin/infection --show-mutations"
     },
     "config": {
         "sort-packages": true,
