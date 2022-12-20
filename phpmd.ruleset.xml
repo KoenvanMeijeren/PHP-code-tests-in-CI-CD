@@ -17,4 +17,7 @@
             <property name="reportLevel" value="5" />
         </properties>
     </rule>
+    <rule ref="rulesets/cleancode.xml/ElseExpression">
+        <priority>2</priority>
+    </rule>
 </ruleset>
